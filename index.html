@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piedra Lab - Baylor College of Medicine</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#333;background:linear-gradient(135deg,#f8fafc,#fff)}
+nav{position:sticky;top:0;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);border-bottom:4px solid #1e40af}
+nav .container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
+.logo{display:flex;align-items:center;gap:1rem}
+.logo-icon{width:50px;height:50px;background:linear-gradient(135deg,#1e40af,#1e3a8a);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:1.25rem}
+.logo h1{font-size:1.5rem;color:#1f2937}
+.nav-links{display:flex;gap:.5rem;flex-wrap:wrap}
+nav button{padding:.5rem 1rem;border:none;background:0;color:#4b5563;font-weight:500;cursor:pointer;border-radius:6px;transition:.3s;font-size:.9rem}
+nav button:hover{background:#f3f4f6}
+nav button.active{background:#1e40af;color:#fff}
+.container{max-width:1200px;margin:0 auto;padding:2rem}
+section{display:none}section.active{display:block}
+h1{font-size:2.5rem;margin-bottom:2rem;color:#1f2937}
+h2{font-size:1.75rem;margin-bottom:1.5rem;color:#1f2937}
+h3{font-size:1.25rem;color:#1f2937;margin-bottom:.5rem}
+.card{background:#fff;border:2px solid #e5e7eb;border-radius:12px;padding:2rem;margin-bottom:1.5rem;transition:.3s}
+.card:hover{border-color:#93c5fd;box-shadow:0 10px 25px rgba(30,64,175,.1)}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-bottom:2rem}
+.home-section{min-height:90vh;background:linear-gradient(135deg,#1e40af,#1e3a8a);color:#fff;display:flex;align-items:center;padding:3rem 2rem;border-radius:12px}
+.home-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+footer{background:#111827;color:#9ca3af;padding:3rem 2rem;margin-top:4rem}
+footer .container{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:2rem}
+@media(max-width:768px){.home-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="container"><div class="logo"><div class="logo-icon">PL</div><div><h1>Piedra Lab</h1></div></div><div class="nav-links">
+<button onclick="showSection('home')" class="nav-btn active">Home</button>
+<button onclick="showSection('team')" class="nav-btn">Team</button>
+<button onclick="showSection('research')" class="nav-btn">Research</button>
+<button onclick="showSection('publications')" class="nav-btn">Publications</button>
+<button onclick="showSection('news')" class="nav-btn">In the News</button>
+<button onclick="showSection('partnerships')" class="nav-btn">Partnerships</button>
+</div></div></nav>
+
+<section id="home" class="active"><div class="home-section"><div class="container" style="width:100%;padding:0"><div class="home-grid"><div><h1>The Piedra Lab</h1><h2 style="color:#bfdbfe;font-size:1.75rem">Advancing Understanding of Respiratory Viral Pathogenesis and Prevention</h2><p style="color:#dbeafe;font-size:1.1rem">The Piedra Laboratory at Baylor College of Medicine is dedicated to translational research in respiratory viruses, with focus on reducing burden of viral respiratory illness in vulnerable populations.</p><button style="background:#fff;color:#1e40af;padding:1rem 2rem;border:none;border-radius:8px;font-weight:bold;cursor:pointer;font-size:1.1rem" onclick="showSection('research')">Explore Research</button></div><div style="background:rgba(255,255,255,.1);border-radius:16px;padding:2rem"><div style="display:flex;gap:1rem;margin-bottom:1.5rem"><div style="font-size:2rem">🔬</div><div><h3 style="color:#fff">Research Excellence</h3><p style="color:#bfdbfe">Groundbreaking viral pathogenesis studies</p></div></div><div style="display:flex;gap:1rem;margin-bottom:1.5rem"><div style="font-size:2rem">👥</div><div><h3 style="color:#fff">Mentorship</h3><p style="color:#bfdbfe">30+ years training physician-scientists</p></div></div><div style="display:flex;gap:1rem"><div style="font-size:2rem">🏆</div><div><h3 style="color:#fff">Impact</h3><p style="color:#bfdbfe">Advancing clinical care and prevention</p></div></div></div></div></div></div></section>
+
+<section id="team"><div class="container"><h1>Our Team</h1><h2>Leadership</h2>
+<div class="card" style="background:linear-gradient(135deg,#f8fafc,#eff6ff);border:1px solid #bfdbfe"><h3>Pedro A. Piedra, MD</h3><p style="color:#1e40af;font-weight:600">Principal Investigator & Director</p><p style="color:#6b7280">Professor, Departments of Molecular Virology and Microbiology, Pediatrics, and Pharmacology</p><p style="margin-top:1rem">Pediatric infectious disease specialist with 30+ years experience in respiratory virus research. Directs the CLIA-certified Respiratory Virus Diagnostic Laboratory.</p><div style="background:#fff;padding:1rem;border-radius:6px;margin-top:1rem;border:1px solid #bfdbfe"><p><strong>Focus:</strong> RSV molecular epidemiology, immune correlates, viral surveillance, vaccine development</p></div></div>
+<div class="card" style="background:linear-gradient(135deg,#f8fafc,#eff6ff);border:1px solid #bfdbfe"><h3>Vasanthi Avadhanula, PhD</h3><p style="color:#1e40af;font-weight:600">Associate Professor</p><p style="color:#6b7280">Department of Molecular Virology and Microbiology</p><p style="margin-top:1rem">Research focus on viral pathogenesis and host immune responses.</p><div style="background:#fff;padding:1rem;border-radius:6px;margin-top:1rem;border:1px solid #bfdbfe"><p><strong>Focus:</strong> RSV pathogenesis, viral genomics, immunological mechanisms</p></div></div>
+<div style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-left:4px solid #1e40af;padding:2rem;border-radius:8px"><h2 style="margin-top:0;color:#1e40af">Research Community</h2><p>The Piedra Lab maintains a vibrant community with graduate students and postdoctoral fellows. With 30+ years mentoring experience, Dr. Piedra is committed to training physician-scientists in respiratory virus research.</p></div></div></section>
+
+<section id="research"><div class="container"><h1>Our Research</h1><div class="grid-2">
+<div class="card"><div style="font-size:3rem;margin-bottom:1rem">🧬</div><h3>Molecular Epidemiology</h3><p>Investigation of RSV genetic variation and evolution across populations and disease contexts.</p></div>
+<div class="card"><div style="font-size:3rem;margin-bottom:1rem">🛡️</div><h3>Immune Correlates</h3><p>Characterization of humoral and cellular immune responses determining viral clearance and disease severity.</p></div>
+<div class="card"><div style="font-size:3rem;margin-bottom:1rem">📊</div><h3>Viral Surveillance</h3><p>Comprehensive monitoring of respiratory illness in children and febrile infants.</p></div>
+<div class="card"><div style="font-size:3rem;margin-bottom:1rem">💊</div><h3>Therapeutic Development</h3><p>Preclinical and translational research on vaccines and antiviral compounds.</p></div>
+</div>
+<div style="background:linear-gradient(135deg,#1e40af,#1e3a8a);color:#fff;padding:2rem;border-radius:8px;margin-bottom:2rem"><h2 style="color:#fff">Advanced Research Models</h2><p style="color:#dbeafe">The Piedra Lab has developed innovative pre-clinical models including human nose organoids (HNO) that recapitulate host-virus interactions for studying RSV and SARS-CoV-2 pathogenesis.</p></div></div></section>
+
+<section id="publications"><div class="container"><h1>Featured Publications</h1>
+<div class="card" style="background:linear-gradient(135deg,#f8fafc,#eff6ff);border-left:4px solid #1e40af"><h3>Inter and intra-host diversity of RSV in hematopoietic stem cell transplant adults</h3><p style="font-style:italic;color:#6b7280">Avadhanula V, et al.</p><div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.9rem"><span style="background:#fff;padding:.25rem .75rem;border-radius:20px;color:#6b7280"><strong>Virus Evolution</strong> 2024, 10(1)</span><span style="background:#fff;padding:.25rem .75rem;border-radius:20px;color:#6b7280"><a href="https://doi.org/10.1093/ve/vead086" style="color:#1e40af;text-decoration:none;font-weight:600">View</a></span></div><p>Comprehensive analysis of RSV genetic variation in immunocompromised populations.</p></div>
+<div class="card" style="background:linear-gradient(135deg,#f8fafc,#eff6ff);border-left:4px solid #1e40af"><h3>Sequence variability of the RSV fusion gene among RSV/A and RSV/B genotypes</h3><p style="font-style:italic;color:#6b7280">Hause AM, et al.</p><div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.9rem"><span style="background:#fff;padding:.25rem .75rem;border-radius:20px;color:#6b7280"><strong>PLoS One</strong> 2017, 12(4)</span><span style="background:#fff;padding:.25rem .75rem;border-radius:20px;color:#6b7280"><a href="https://doi.org/10.1371/journal.pone.0175792" style="color:#1e40af;text-decoration:none;font-weight:600">View</a></span></div><p>Characterization of RSV genetic diversity with vaccine and therapeutic implications.</p></div>
+<div style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-left:4px solid #1e40af;padding:2rem;border-radius:8px"><h2 style="margin-top:0;color:#1e40af">Complete Publication List</h2><p>For comprehensive publications, visit <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" style="color:#1e40af;font-weight:600">PubMed</a> or contact the laboratory.</p></div></div></section>
+
+<section id="news"><div class="container"><h1>In the News</h1>
+<div class="card"><h3>Baylor Researchers Discuss COVID-19 Antibody Response and Testing</h3><p style="font-size:.9rem;color:#6b7280">KVUE Austin • 2020</p><p>Dr. Piedra provided expert commentary on diagnostic testing and immune response in viral infections.</p></div>
+<div class="card"><h3>RSV Research Advances with Human Nose Organoid Model</h3><p style="font-size:.9rem;color:#6b7280">Baylor College of Medicine • 2023</p><p>Novel ex vivo airway model for studying respiratory viral pathogenesis and therapeutic evaluation.</p></div>
+<div style="background:linear-gradient(135deg,#1e40af,#1e3a8a);color:#fff;padding:2rem;border-radius:8px"><h2 style="color:#fff;margin-top:0">Research Impact</h2><p style="color:#dbeafe">The Piedra Lab's research has contributed significantly to understanding respiratory viral pathogenesis and developing novel therapeutic strategies.</p></div></div></section>
+
+<section id="partnerships"><div class="container"><h1>Partnerships & Funding</h1><h2>Strategic Partnerships</h2>
+<div class="grid-2">
+<div class="card" style="background:linear-gradient(135deg,#f8fafc,#eff6ff);border:1px solid #bfdbfe"><h3>Baylor College of Medicine</h3><p style="color:#1e40af;font-weight:600">Molecular Virology and Microbiology</p><p>Primary institutional affiliation providing research infrastructure.</p></div>
+<div class="card" style="background:linear-gradient(135deg,#f8fafc,#eff6ff);border:1px solid #bfdbfe"><h3>Texas Children's Hospital</h3><p style="color:#1e40af;font-weight:600">Infectious Diseases Section</p><p>Clinical partnership for translational research.</p></div>
+<div class="card" style="background:linear-gradient(135deg,#f8fafc,#eff6ff);border:1px solid #bfdbfe"><h3>National Institutes of Health</h3><p style="color:#1e40af;font-weight:600">GCID Program</p><p>Genome Center of Infectious Diseases funding support.</p></div>
+<div class="card" style="background:linear-gradient(135deg,#f8fafc,#eff6ff);border:1px solid #bfdbfe"><h3>Vaccine Research Center</h3><p style="color:#1e40af;font-weight:600">Baylor College of Medicine</p><p>Collaborative vaccine development research.</p></div>
+</div>
+<div style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:4px solid #f59e0b;padding:2rem;border-radius:8px;margin-bottom:2rem;color:#92400e"><h2 style="margin-top:0;color:#92400e">Funding Support</h2><ul style="list-style:none"><li style="padding:.75rem 0;padding-left:2rem;position:relative">• National Institutes of Health (NIH)</li><li style="padding:.75rem 0;padding-left:2rem;position:relative">• GCID U19 Program</li><li style="padding:.75rem 0;padding-left:2rem;position:relative">• Baylor College of Medicine</li><li style="padding:.75rem 0;padding-left:2rem;position:relative">• Texas Children's Hospital</li></ul></div>
+<div style="background:linear-gradient(135deg,#1e40af,#1e3a8a);color:#fff;padding:2rem;border-radius:8px"><h2 style="color:#fff;margin-top:0">Contact Information</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem"><div><h3 style="color:#fff">Laboratory Location</h3><p>Department of Molecular Virology and Microbiology<br>Baylor College of Medicine<br>One Baylor Plaza<br>Houston, TX 77030</p></div><div><h3 style="color:#fff">Contact Details</h3><p><strong>Phone:</strong> (713) 798-4443<br><strong>Email:</strong> ppiedra@bcm.edu</p></div></div></div></div></section>
+
+<footer><div class="container"><div><h4>About the Lab</h4><p>Dedicated to advancing understanding of respiratory viral pathogenesis and developing innovative prevention strategies.</p></div><div><h4>Institution</h4><p>Baylor College of Medicine, Houston, Texas</p></div><div><h4>Resources</h4><ul><li>BCM Departments</li><li>Texas Children's Hospital</li><li>NIH Support</li></ul></div></div><div style="border-top:1px solid #374151;padding-top:2rem;text-align:center;font-size:.9rem"><p>© 2025 Piedra Lab, Baylor College of Medicine. All rights reserved.</p></div></footer>
+
+<script>
+function showSection(id){
+document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+event.target.classList.add('active');
+window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
