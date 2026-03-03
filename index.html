@@ -3,109 +3,446 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Piedra Lab | Molecular Virology &amp; Microbiology | Baylor College of Medicine</title>
+<title>Piedra Laboratory | Molecular Virology &amp; Microbiology | Baylor College of Medicine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 <style>
-:root{--navy:#002147;--gold:#C8922A;--light-gold:#f0d99a;--light-gray:#f5f6f8;--mid-gray:#e0e3ea;--text:#1c1c1e;--muted:#6b7280;--white:#ffffff;--accent:#1a5276;}
+/* ── DESIGN TOKENS ─────────────────────────────────── */
+:root{
+  --navy:#002147;
+  --navy-mid:#0d2f5e;
+  --navy-light:#1a4580;
+  --gold:#C8922A;
+  --gold-light:#e8b84b;
+  --gold-pale:#f5e6c0;
+  --cream:#faf8f4;
+  --gray-100:#f2f3f5;
+  --gray-200:#e4e6ea;
+  --gray-400:#9ca3af;
+  --gray-600:#4b5563;
+  --gray-800:#1f2937;
+  --white:#ffffff;
+  --shadow-sm:0 1px 4px rgba(0,0,0,.08);
+  --shadow-md:0 4px 20px rgba(0,0,0,.10);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.14);
+  --radius:6px;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Source Sans 3',system-ui,sans-serif;
+}
+
+/* ── RESET & BASE ───────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Georgia','Times New Roman',serif;color:var(--text);background:var(--white);scroll-behavior:smooth;}
-nav{position:sticky;top:0;z-index:100;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:62px;box-shadow:0 2px 12px rgba(0,0,0,.35);}
-.nav-brand{font-family:'Arial',sans-serif;font-size:1rem;font-weight:700;color:var(--white);letter-spacing:.05em;text-decoration:none;}
-.nav-brand span{color:var(--gold);}
-.nav-links{display:flex;gap:1.8rem;list-style:none;}
-.nav-links a{font-family:'Arial',sans-serif;font-size:.82rem;font-weight:600;color:#d0d8e8;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);color:var(--gray-800);background:var(--white);line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+
+/* ── NAVIGATION ─────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;height:60px;
+  box-shadow:0 2px 16px rgba(0,0,0,.4);
+}
+.nav-brand{
+  font-family:var(--serif);font-size:1.05rem;font-weight:400;
+  color:var(--white);letter-spacing:.02em;
+}
+.nav-brand strong{color:var(--gold);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  font-family:var(--sans);font-size:.75rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.65);transition:color .2s;
+}
 .nav-links a:hover{color:var(--gold);}
-.hero{background:linear-gradient(135deg,var(--navy) 0%,#1a3a6b 60%,#0d2a50 100%);color:var(--white);display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:520px;padding:4rem 6rem;gap:4rem;position:relative;overflow:hidden;}
-.hero-eyebrow{font-family:'Arial',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-.hero h1{font-size:2.9rem;font-weight:400;line-height:1.2;margin-bottom:1rem;}
-.hero h1 em{font-style:normal;color:var(--light-gold);}
-.hero-sub{font-size:1.05rem;line-height:1.7;color:#b8c9e0;max-width:480px;margin-bottom:2rem;}
-.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);font-family:'Arial',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.75rem 1.75rem;text-decoration:none;border-radius:2px;transition:background .2s;}
-.hero-cta:hover{background:var(--light-gold);}
-.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
-.stat-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:1.5rem 1.25rem;text-align:center;}
-.stat-card .number{font-size:2.2rem;font-weight:700;color:var(--gold);display:block;}
-.stat-card .label{font-family:'Arial',sans-serif;font-size:.78rem;color:#9db8d8;margin-top:.3rem;letter-spacing:.04em;}
-section{padding:5rem 6rem;}
-section:nth-child(even){background:var(--light-gray);}
-.section-header{margin-bottom:3rem;}
-.section-eyebrow{font-family:'Arial',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
-.section-title{font-size:1.95rem;font-weight:400;color:var(--navy);border-bottom:3px solid var(--gold);padding-bottom:.6rem;display:inline-block;}
-.section-intro{max-width:820px;margin-top:1rem;font-size:1.05rem;line-height:1.8;color:#374151;}
-.overview-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:2.5rem;}
-.focus-card{background:var(--white);border-top:4px solid var(--gold);border-radius:4px;padding:1.75rem;box-shadow:0 1px 6px rgba(0,0,0,.07);}
-.focus-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.75rem;font-family:'Arial',sans-serif;}
-.focus-card p{font-size:.93rem;line-height:1.7;color:#4b5563;}
-/* PTTC banner */
-.pttc-banner{background:linear-gradient(135deg,#0d2a50,#1a3a6b);border-radius:6px;padding:2rem 2.5rem;margin-top:2.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;box-shadow:0 2px 12px rgba(0,0,0,.15);}
-.pttc-banner-text h3{font-family:'Arial',sans-serif;font-size:1.05rem;font-weight:700;color:var(--gold);margin-bottom:.5rem;}
-.pttc-banner-text p{font-size:.93rem;color:#b8c9e0;line-height:1.7;}
-.pttc-btn{display:inline-block;background:var(--gold);color:var(--navy);font-family:'Arial',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:.65rem 1.4rem;border-radius:2px;text-decoration:none;white-space:nowrap;}
-.pttc-btn:hover{background:var(--light-gold);}
-/* Virus monitoring */
-.virus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.85rem;margin-top:1.5rem;}
-.virus-chip{background:var(--white);border:1px solid var(--mid-gray);border-radius:4px;padding:.75rem 1rem;font-family:'Arial',sans-serif;font-size:.82rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:border-color .2s,box-shadow .2s;}
-.virus-chip:hover{border-color:var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.08);}
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero{
+  min-height:580px;
+  background:
+    linear-gradient(135deg,rgba(0,33,71,.97) 0%,rgba(13,47,94,.94) 55%,rgba(26,69,128,.88) 100%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><circle cx="30" cy="30" r="1" fill="rgba(200,146,42,.15)"/></svg>');
+  color:var(--white);
+  display:grid;grid-template-columns:1.1fr 0.9fr;
+  align-items:center;gap:4rem;
+  padding:5rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,146,42,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  font-family:var(--sans);font-size:.72rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.1rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.hero-eyebrow::before{
+  content:'';display:block;width:28px;height:2px;background:var(--gold);
+}
+.hero h1{
+  font-family:var(--serif);font-size:3rem;font-weight:400;
+  line-height:1.18;margin-bottom:1.25rem;
+}
+.hero h1 em{font-style:italic;color:var(--gold-light);}
+.hero-sub{
+  font-size:1.05rem;line-height:1.8;color:rgba(255,255,255,.75);
+  max-width:500px;margin-bottom:2rem;font-weight:300;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--gold);color:var(--navy);
+  font-family:var(--sans);font-size:.8rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:.75rem 1.75rem;border-radius:2px;
+  transition:background .2s,transform .15s;
+}
+.hero-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.stat-box{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:var(--radius);padding:1.5rem 1.25rem;text-align:center;
+  backdrop-filter:blur(4px);
+  transition:border-color .2s;
+}
+.stat-box:hover{border-color:rgba(200,146,42,.4);}
+.stat-num{
+  font-family:var(--serif);font-size:2.3rem;color:var(--gold);
+  display:block;font-weight:700;line-height:1;
+}
+.stat-label{
+  font-family:var(--sans);font-size:.74rem;color:rgba(255,255,255,.55);
+  margin-top:.35rem;letter-spacing:.04em;text-transform:uppercase;
+}
+
+/* ── SECTION SCAFFOLDING ────────────────────────────── */
+section{padding:5.5rem 4rem;}
+section.bg-cream{background:var(--cream);}
+section.bg-navy{background:var(--navy);color:var(--white);}
+.section-kicker{
+  font-family:var(--sans);font-size:.7rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.6rem;
+}
+.section-title{
+  font-family:var(--serif);font-size:2.1rem;font-weight:400;
+  color:var(--navy);line-height:1.25;margin-bottom:.5rem;
+}
+.bg-navy .section-title{color:var(--white);}
+.section-rule{width:48px;height:3px;background:var(--gold);margin-bottom:1.5rem;}
+.section-intro{
+  max-width:780px;font-size:1.03rem;line-height:1.85;
+  color:var(--gray-600);margin-bottom:2.5rem;
+}
+.bg-navy .section-intro{color:rgba(255,255,255,.65);}
+
+/* ── OVERVIEW GRID ──────────────────────────────────── */
+.focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:.5rem;}
+.focus-card{
+  background:var(--white);border-radius:var(--radius);
+  padding:1.75rem;
+  border-top:3px solid var(--gold);
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .2s,transform .2s;
+}
+.focus-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.focus-icon{
+  font-size:1.5rem;margin-bottom:.9rem;
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--gold-pale);
+}
+.focus-card h3{
+  font-family:var(--sans);font-size:.95rem;font-weight:700;
+  color:var(--navy);margin-bottom:.65rem;
+}
+.focus-card p{font-size:.88rem;line-height:1.75;color:var(--gray-600);}
+
+/* ── PTTC BANNER ────────────────────────────────────── */
+.pttc-banner{
+  margin-top:3rem;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,var(--navy-light) 100%);
+  border-radius:var(--radius);padding:2.25rem 2.75rem;
+  display:grid;grid-template-columns:1fr auto;
+  align-items:center;gap:2.5rem;
+  box-shadow:var(--shadow-md);
+}
+.pttc-label{
+  font-family:var(--sans);font-size:.7rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:.5rem;
+}
+.pttc-banner h3{
+  font-family:var(--serif);font-size:1.25rem;font-weight:400;
+  color:var(--white);margin-bottom:.6rem;
+}
+.pttc-banner p{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.75;}
+.pttc-btn{
+  display:inline-block;background:var(--gold);color:var(--navy);
+  font-family:var(--sans);font-size:.78rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.07em;
+  padding:.75rem 1.5rem;border-radius:2px;white-space:nowrap;
+  transition:background .2s;flex-shrink:0;
+}
+.pttc-btn:hover{background:var(--gold-light);}
+
+/* ── VIRUS MONITORING CHIPS ─────────────────────────── */
+.virus-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));
+  gap:.75rem;margin-top:1.5rem;
+}
+.virus-chip{
+  background:var(--white);border:1.5px solid var(--gray-200);
+  border-radius:4px;padding:.75rem 1rem;
+  font-family:var(--sans);font-size:.82rem;color:var(--navy);
+  display:flex;align-items:center;gap:.55rem;
+  transition:border-color .2s,box-shadow .2s;
+}
+.virus-chip:hover{border-color:var(--gold);box-shadow:var(--shadow-sm);}
 .virus-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;}
-.team-section-title{font-family:'Arial',sans-serif;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);border-left:4px solid var(--gold);padding-left:.75rem;margin:2.5rem 0 1.5rem;}
-.pi-card{display:grid;grid-template-columns:200px 1fr;gap:2.5rem;background:var(--white);border-radius:6px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);margin-bottom:1.5rem;}
-.pi-photo{background:linear-gradient(135deg,var(--navy),var(--accent));display:flex;align-items:center;justify-content:center;min-height:220px;}
-.pi-photo .initials{font-size:3rem;font-weight:700;color:var(--white);font-family:'Arial',sans-serif;}
-.pi-info{padding:1.75rem 1.75rem 1.75rem 0;}
-.pi-info h3{font-size:1.4rem;color:var(--navy);margin-bottom:.25rem;}
-.pi-info .title{font-family:'Arial',sans-serif;font-size:.83rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.9rem;}
-.pi-info p{font-size:.95rem;line-height:1.75;color:#374151;margin-bottom:.75rem;}
-.pi-info .contact{font-family:'Arial',sans-serif;font-size:.83rem;color:var(--accent);}
-.pi-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;}
-.badge{font-family:'Arial',sans-serif;font-size:.72rem;font-weight:600;color:var(--navy);background:var(--light-gold);border-radius:2px;padding:.25rem .6rem;letter-spacing:.03em;}
-.members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem;}
-.member-card{background:var(--white);border-radius:4px;padding:1.5rem 1.25rem;box-shadow:0 1px 6px rgba(0,0,0,.06);border-top:3px solid var(--mid-gray);transition:border-color .2s,box-shadow .2s;}
-.member-card:hover{border-color:var(--gold);box-shadow:0 4px 18px rgba(0,0,0,.11);}
-.member-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Arial',sans-serif;font-weight:700;color:var(--white);font-size:.95rem;margin-bottom:1rem;}
-.member-card h4{font-size:.98rem;color:var(--navy);margin-bottom:.25rem;}
-.member-card .role{font-family:'Arial',sans-serif;font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
-.honors-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
-.honor-item{background:var(--white);border-radius:4px;padding:1rem 1.25rem;border-left:3px solid var(--gold);font-size:.9rem;color:#374151;box-shadow:0 1px 4px rgba(0,0,0,.05);}
-.honor-item strong{display:block;color:var(--navy);font-family:'Arial',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem;}
-.alumni-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.75rem;margin-top:1rem;}
-.alumni-item{display:flex;align-items:center;gap:.75rem;background:var(--white);padding:.85rem 1rem;border-radius:4px;font-size:.9rem;border:1px solid var(--mid-gray);}
+
+/* ── TEAM SUBSECTION HEADINGS ───────────────────────── */
+.team-heading{
+  font-family:var(--sans);font-size:.78rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--navy);border-left:4px solid var(--gold);
+  padding:.1rem 0 .1rem .75rem;
+  margin:3rem 0 1.5rem;
+}
+
+/* ── PI CARD ────────────────────────────────────────── */
+.pi-card{
+  display:grid;grid-template-columns:240px 1fr;
+  gap:0;background:var(--white);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow-md);
+  border:1px solid var(--gray-200);
+}
+.pi-photo-wrap{
+  background:linear-gradient(160deg,var(--navy) 0%,var(--navy-light) 100%);
+  display:flex;align-items:stretch;
+}
+.pi-photo-wrap img{
+  width:240px;height:100%;object-fit:cover;object-position:center top;
+  display:block;
+}
+.pi-photo-wrap.placeholder{
+  align-items:center;justify-content:center;
+  min-height:240px;
+}
+.pi-initials-lg{
+  font-family:var(--serif);font-size:3.5rem;font-weight:700;
+  color:rgba(255,255,255,.9);
+}
+.pi-body{padding:2rem 2.25rem;}
+.pi-body h3{
+  font-family:var(--serif);font-size:1.55rem;font-weight:400;
+  color:var(--navy);margin-bottom:.2rem;
+}
+.pi-title{
+  font-family:var(--sans);font-size:.78rem;font-weight:700;
+  color:var(--gold);text-transform:uppercase;letter-spacing:.07em;
+  margin-bottom:1rem;
+}
+.pi-body p{font-size:.92rem;line-height:1.8;color:var(--gray-600);margin-bottom:.8rem;}
+.pi-contact{font-size:.83rem;color:var(--navy-light);font-family:var(--sans);}
+.badge-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.75rem;}
+.badge{
+  font-family:var(--sans);font-size:.7rem;font-weight:700;
+  color:var(--navy);background:var(--gold-pale);
+  border-radius:2px;padding:.2rem .55rem;letter-spacing:.03em;
+}
+
+/* ── MEMBER CARDS ───────────────────────────────────── */
+.members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem;}
+.member-card{
+  background:var(--white);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow-sm);
+  border:1px solid var(--gray-200);
+  transition:box-shadow .2s,transform .2s;
+}
+.member-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.member-photo{
+  width:100%;height:190px;
+  background:linear-gradient(160deg,var(--navy) 0%,var(--navy-light) 100%);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
+}
+.member-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  display:block;
+}
+.member-photo .initials{
+  font-family:var(--serif);font-size:2rem;font-weight:700;
+  color:rgba(255,255,255,.9);position:absolute;
+}
+.member-photo img.loaded + .initials{display:none;}
+.member-meta{padding:1rem 1.1rem 1.2rem;}
+.member-meta h4{
+  font-family:var(--sans);font-size:.92rem;font-weight:700;
+  color:var(--navy);margin-bottom:.2rem;line-height:1.35;
+}
+.member-role{
+  font-family:var(--sans);font-size:.74rem;
+  color:var(--gray-400);text-transform:uppercase;letter-spacing:.05em;
+}
+.member-card-bar{height:3px;background:var(--gold);}
+
+/* ── HONORS GRID ────────────────────────────────────── */
+.honors-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.honor-item{
+  background:var(--white);border-radius:4px;
+  padding:1rem 1.25rem;border-left:3px solid var(--gold);
+  font-size:.88rem;color:var(--gray-600);
+  box-shadow:var(--shadow-sm);line-height:1.6;
+}
+.honor-item strong{
+  display:block;color:var(--navy);
+  font-family:var(--sans);font-size:.75rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem;
+}
+
+/* ── ALUMNI ─────────────────────────────────────────── */
+.alumni-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.75rem;}
+.alumni-item{
+  display:flex;align-items:center;gap:.75rem;
+  background:var(--white);padding:.85rem 1rem;
+  border-radius:4px;font-size:.88rem;
+  border:1px solid var(--gray-200);color:var(--gray-600);
+}
 .alumni-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+
+/* ── PUBLICATIONS ───────────────────────────────────── */
 .pub-list{display:flex;flex-direction:column;gap:1.25rem;}
-.pub-card{background:var(--white);border-left:4px solid var(--navy);padding:1.5rem 1.5rem 1.5rem 1.75rem;border-radius:0 4px 4px 0;box-shadow:0 1px 6px rgba(0,0,0,.06);transition:border-color .2s;}
-.pub-card:hover{border-color:var(--gold);}
-.pub-year{font-family:'Arial',sans-serif;font-size:.72rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;}
-.pub-card h3{font-size:1rem;color:var(--navy);margin-bottom:.5rem;line-height:1.45;}
-.pub-card .authors{font-size:.85rem;color:var(--muted);margin-bottom:.35rem;}
-.pub-card .journal{font-family:'Arial',sans-serif;font-size:.82rem;color:var(--accent);font-style:italic;}
+.pub-card{
+  background:var(--white);
+  border-left:4px solid var(--navy);
+  padding:1.5rem 1.5rem 1.5rem 1.75rem;
+  border-radius:0 var(--radius) var(--radius) 0;
+  box-shadow:var(--shadow-sm);
+  transition:border-color .2s,box-shadow .2s;
+}
+.pub-card:hover{border-color:var(--gold);box-shadow:var(--shadow-md);}
+.pub-year{
+  font-family:var(--sans);font-size:.7rem;font-weight:700;
+  color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;
+}
+.pub-card h3{
+  font-family:var(--serif);font-size:1rem;color:var(--navy);
+  margin-bottom:.5rem;line-height:1.45;
+}
+.pub-authors{font-size:.83rem;color:var(--gray-400);margin-bottom:.3rem;}
+.pub-journal{font-family:var(--sans);font-size:.8rem;color:var(--navy-light);font-style:italic;}
+
+/* ── NEWS GRID ──────────────────────────────────────── */
 .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
-.news-card{background:var(--white);border-radius:6px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s;}
-.news-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.13);transform:translateY(-2px);}
-.news-card-header{background:linear-gradient(135deg,var(--navy),var(--accent));height:80px;display:flex;align-items:center;padding:0 1.5rem;}
-.news-tag{font-family:'Arial',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);}
-.news-card-body{padding:1.25rem 1.5rem;flex:1;}
-.news-date{font-family:'Arial',sans-serif;font-size:.75rem;color:var(--muted);margin-bottom:.5rem;}
-.news-card h3{font-size:.98rem;color:var(--navy);margin-bottom:.65rem;line-height:1.5;}
-.news-card p{font-size:.87rem;color:#4b5563;line-height:1.65;}
-.news-source{font-family:'Arial',sans-serif;font-size:.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;padding:.75rem 1.5rem;border-top:1px solid var(--mid-gray);}
+.news-card{
+  background:var(--white);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;
+  border:1px solid var(--gray-200);
+  transition:box-shadow .2s,transform .15s;
+}
+.news-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.news-top{
+  background:linear-gradient(120deg,var(--navy),var(--navy-light));
+  padding:.9rem 1.25rem;
+}
+.news-outlet{
+  font-family:var(--sans);font-size:.68rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--gold);
+}
+.news-body{padding:1.25rem 1.5rem;flex:1;}
+.news-date{font-family:var(--sans);font-size:.74rem;color:var(--gray-400);margin-bottom:.5rem;}
+.news-card h3{
+  font-family:var(--serif);font-size:.98rem;color:var(--navy);
+  margin-bottom:.65rem;line-height:1.45;
+}
+.news-card p{font-size:.85rem;color:var(--gray-600);line-height:1.7;}
+
+/* ── FUNDING ─────────────────────────────────────────── */
 .funding-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
-.funder-card{background:var(--white);border-radius:6px;padding:2rem;box-shadow:0 1px 8px rgba(0,0,0,.07);}
-.funder-card h3{font-family:'Arial',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;}
-.funder-icon{width:32px;height:32px;border-radius:50%;background:var(--gold);display:inline-flex;align-items:center;justify-content:center;color:var(--navy);font-weight:900;font-size:.85rem;flex-shrink:0;}
+.funder-card{
+  background:var(--white);border-radius:var(--radius);
+  padding:2rem;box-shadow:var(--shadow-sm);
+  border:1px solid var(--gray-200);
+}
+.funder-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;}
+.funder-icon{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--gold);color:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-weight:900;font-size:.8rem;flex-shrink:0;
+}
+.funder-head h3{font-family:var(--sans);font-size:.95rem;font-weight:700;color:var(--navy);}
 .funder-card ul{list-style:none;}
-.funder-card li{font-size:.9rem;color:#374151;padding:.5rem 0;border-bottom:1px solid var(--mid-gray);line-height:1.55;}
+.funder-card li{
+  font-size:.88rem;color:var(--gray-600);
+  padding:.6rem 0;border-bottom:1px solid var(--gray-200);line-height:1.55;
+}
 .funder-card li:last-child{border-bottom:none;}
-.grant-id{font-family:'Arial',sans-serif;font-size:.75rem;color:var(--muted);margin-top:.15rem;}
-footer{background:var(--navy);color:#9db8d8;padding:3rem 6rem;font-family:'Arial',sans-serif;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;}
-footer h4{color:var(--white);font-size:.88rem;margin-bottom:1rem;}
-footer p,footer a{font-size:.82rem;line-height:1.7;color:#9db8d8;text-decoration:none;display:block;}
+.grant-id{font-family:var(--sans);font-size:.74rem;color:var(--gray-400);margin-top:.15rem;}
+
+/* ── CONTACT ─────────────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.contact-box{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius);padding:1.5rem 1.75rem;
+}
+.contact-box-label{
+  font-family:var(--sans);font-size:.7rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.65rem;
+}
+.contact-box p{font-size:.9rem;color:rgba(255,255,255,.72);line-height:1.85;}
+.contact-box a{color:var(--gold);}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer{
+  background:#001535;color:rgba(255,255,255,.5);
+  padding:3rem 4rem;font-family:var(--sans);
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;
+}
+footer h4{color:rgba(255,255,255,.85);font-size:.85rem;margin-bottom:.9rem;}
+footer a,footer p{font-size:.8rem;line-height:1.9;color:rgba(255,255,255,.5);display:block;}
 footer a:hover{color:var(--gold);}
-.footer-bottom{background:#001535;text-align:center;font-family:'Arial',sans-serif;font-size:.78rem;color:#6b7280;padding:1rem;}
-@media(max-width:900px){.nav-links{display:none;}.hero{grid-template-columns:1fr;padding:3rem 2rem;}.hero-stats{display:none;}section{padding:3.5rem 2rem;}.overview-grid,.funding-grid,.honors-grid{grid-template-columns:1fr;}.pi-card{grid-template-columns:1fr;}.pttc-banner{grid-template-columns:1fr;}footer{grid-template-columns:1fr;padding:2rem;}}
+.footer-bottom{
+  background:#000e22;text-align:center;
+  font-family:var(--sans);font-size:.75rem;
+  color:rgba(255,255,255,.3);padding:1rem;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;padding:4rem 2.5rem;}
+  .hero-stats{grid-template-columns:1fr 1fr;max-width:400px;}
+  .focus-grid{grid-template-columns:1fr 1fr;}
+  .funding-grid{grid-template-columns:1fr;}
+  footer{grid-template-columns:1fr 1fr;padding:2.5rem 2.5rem;}
+}
+@media(max-width:768px){
+  nav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .hero{padding:3.5rem 1.5rem;}
+  .hero h1{font-size:2.2rem;}
+  section{padding:4rem 1.5rem;}
+  .focus-grid,.honors-grid,.contact-grid{grid-template-columns:1fr;}
+  .pi-card{grid-template-columns:1fr;}
+  .pi-photo-wrap img{width:100%;height:260px;}
+  footer{grid-template-columns:1fr;padding:2rem 1.5rem;}
+}
 </style>
 </head>
 <body>
 
+<!-- ══ NAVIGATION ══════════════════════════════════════ -->
 <nav>
-  <a href="#" class="nav-brand">Piedra <span>Lab</span> | BCM</a>
+  <a href="#" class="nav-brand">Piedra <strong>Laboratory</strong> &nbsp;·&nbsp; BCM</a>
   <ul class="nav-links">
     <li><a href="#overview">Research</a></li>
     <li><a href="#team">Team</a></li>
@@ -116,374 +453,729 @@ footer a:hover{color:var(--gold);}
   </ul>
 </nav>
 
+<!-- ══ HERO ════════════════════════════════════════════ -->
 <header class="hero">
   <div>
     <p class="hero-eyebrow">Department of Molecular Virology &amp; Microbiology &nbsp;·&nbsp; Baylor College of Medicine</p>
     <h1>Piedra Laboratory for <em>Respiratory Virus Research</em></h1>
-    <p class="hero-sub">Advancing prevention and treatment of respiratory viral illness in infants, children, and the broader community through translational science, vaccine development, pandemic preparedness, and innovative organoid models.</p>
+    <p class="hero-sub">Advancing prevention and treatment of respiratory viral illness through translational science, vaccine development, pandemic preparedness, and innovative organoid models — since 1987.</p>
     <a href="#overview" class="hero-cta">Explore Our Research ↓</a>
   </div>
   <div class="hero-stats">
-    <div class="stat-card"><span class="number">35+</span><span class="label">Years of RSV Research</span></div>
-    <div class="stat-card"><span class="number">200+</span><span class="label">Peer-Reviewed Publications</span></div>
-    <div class="stat-card"><span class="number">350</span><span class="label">Samples Tested Daily (Peak)</span></div>
-    <div class="stat-card"><span class="number">20K+</span><span class="label">Infants in RSV Surveillance</span></div>
+    <div class="stat-box"><span class="stat-num">35+</span><span class="stat-label">Years RSV Research</span></div>
+    <div class="stat-box"><span class="stat-num">200+</span><span class="stat-label">Publications</span></div>
+    <div class="stat-box"><span class="stat-num">350</span><span class="stat-label">Samples / Day (Peak)</span></div>
+    <div class="stat-box"><span class="stat-num">20K+</span><span class="stat-label">Infants in Surveillance</span></div>
   </div>
 </header>
 
-<!-- OVERVIEW -->
-<section id="overview">
-  <div class="section-header">
-    <p class="section-eyebrow">Who We Are</p>
-    <h2 class="section-title">Laboratory Overview</h2>
-    <p class="section-intro">The Piedra Laboratory, situated within the Department of Molecular Virology and Microbiology at Baylor College of Medicine, has been at the forefront of respiratory virus research since 1987. Under the direction of Dr. Pedro A. "Tony" Piedra, M.D., the lab pursues a singular mission: reducing the burden of respiratory viral illness — particularly respiratory syncytial virus (RSV) and emerging pandemic threats — through rigorous basic, translational, and clinical investigation. The laboratory is embedded in the Texas Medical Center and maintains deep collaborative ties with Texas Children's Hospital and the CDC-funded New Vaccine Surveillance Network (NVSN).</p>
-    <p class="section-intro" style="margin-top:1rem;">Our integrated research program spans <em>ex vivo</em> organoid modeling, whole-genome viral surveillance, immunology of natural infection and vaccination, and clinical trials of novel therapeutics and preventive interventions. Dr. Piedra additionally directs Baylor's CLIA/FDA-Certified Respiratory Virus Diagnostic Laboratory and leads the BCM Pandemic Threat Technology Center (PTTC), positioning the lab at the nexus of discovery science and pandemic preparedness.</p>
-  </div>
+<!-- ══ OVERVIEW ════════════════════════════════════════ -->
+<section id="overview" class="bg-cream">
+  <p class="section-kicker">Who We Are</p>
+  <h2 class="section-title">Laboratory Overview</h2>
+  <div class="section-rule"></div>
+  <p class="section-intro">The Piedra Laboratory, situated within the Department of Molecular Virology and Microbiology at Baylor College of Medicine, has been at the forefront of respiratory virus research since 1987. Under the direction of Dr. Pedro A. "Tony" Piedra, M.D., the lab pursues a singular mission: reducing the burden of respiratory viral illness — particularly RSV and emerging pandemic threats — through rigorous basic, translational, and clinical investigation. The laboratory maintains deep collaborative ties with Texas Children's Hospital and the CDC-funded New Vaccine Surveillance Network (NVSN), and Dr. Piedra additionally directs the BCM Pandemic Threat Technology Center (PTTC).</p>
 
-  <div class="overview-grid">
-    <div class="focus-card"><h3>RSV Pathogenesis &amp; Immunity</h3><p>We investigate the molecular and cellular mechanisms underlying RSV infection across age groups, including why infants experience more severe disease than adults. Our human nose organoid (HNO) air-liquid interface platform provides a physiologically relevant, non-invasive model to dissect innate immune responses, viral tropism, and mucociliary dysfunction.</p></div>
-    <div class="focus-card"><h3>Vaccine &amp; Prophylaxis Development</h3><p>The laboratory has contributed to the clinical evaluation of maternal RSV vaccines, long-acting monoclonal antibodies, and subunit vaccine candidates. We serve as a principal Baylor site for phase II–III multi-center trials and perform immunogenicity and efficacy assessments including serology and viral challenge studies.</p></div>
-    <div class="focus-card"><h3>Respiratory Virus Surveillance</h3><p>Through active participation in the CDC's New Vaccine Surveillance Network, we conduct community-based epidemiological studies tracking RSV, influenza, SARS-CoV-2, and other respiratory pathogens across pediatric and adult populations in Houston and nationally, directly informing public health policy.</p></div>
-    <div class="focus-card"><h3>Genomic &amp; Evolutionary Virology</h3><p>Leveraging whole-genome sequencing, probe-based capture enrichment, and single-cell transcriptomics, we characterize RSV and SARS-CoV-2 evolutionary dynamics across pandemic and interpandemic periods. During COVID-19, the lab processed up to 350 samples daily with 24-hour turnaround, tracking viral mutations in real time to inform vaccine strain coverage decisions.</p></div>
-    <div class="focus-card"><h3>CLIA Diagnostic Laboratory</h3><p>Dr. Piedra directs Baylor's FDA-Certified Respiratory Virus Diagnostic Laboratory, which supports clinical care, research, and public health surveillance. The lab receives samples from Baylor's affiliated hospitals and played a central role in large-scale community testing and viral sequencing during the COVID-19 pandemic in the Houston metropolitan area.</p></div>
-    <div class="focus-card"><h3>Pediatric &amp; Maternal Immunization</h3><p>We study antibody kinetics, durability of protection, the role of respiratory viruses in febrile infants under 90 days of age, and original antigenic sin phenomena. Research areas include bronchiolitis and its relation to asthma, biomarkers of acute respiratory viral disease, and clinical significance of respiratory infections in pregnant women.</p></div>
+  <div class="focus-grid">
+    <div class="focus-card">
+      <div class="focus-icon">🔬</div>
+      <h3>RSV Pathogenesis &amp; Immunity</h3>
+      <p>Molecular and cellular mechanisms of RSV infection across age groups, using human nose organoid (HNO) air-liquid interface platforms to dissect innate immunity, viral tropism, and mucociliary dysfunction.</p>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">💉</div>
+      <h3>Vaccine &amp; Prophylaxis Development</h3>
+      <p>Clinical evaluation of maternal RSV vaccines, long-acting monoclonal antibodies, and subunit vaccine candidates. Site PI for phase II–III trials; immunogenicity and viral challenge study design.</p>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">📊</div>
+      <h3>Respiratory Virus Surveillance</h3>
+      <p>CDC New Vaccine Surveillance Network (NVSN) community-based epidemiology across pediatric and adult populations in Houston — directly informing national public health policy.</p>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">🧬</div>
+      <h3>Genomic &amp; Evolutionary Virology</h3>
+      <p>Whole-genome sequencing and single-cell transcriptomics to characterize RSV and SARS-CoV-2 evolutionary dynamics. During COVID-19, the lab processed 350 samples/day tracking viral mutations in real time.</p>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">🏥</div>
+      <h3>CLIA Diagnostic Laboratory</h3>
+      <p>Dr. Piedra directs Baylor's FDA-Certified Respiratory Virus Diagnostic Laboratory, serving affiliated hospitals and playing a central role in large-scale COVID-19 testing and sequencing in Houston.</p>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">🤱</div>
+      <h3>Pediatric &amp; Maternal Immunization</h3>
+      <p>Antibody kinetics, durability of protection, febrile infants under 90 days, respiratory infections in pregnancy, bronchiolitis-asthma relationships, and biomarkers of acute respiratory viral disease.</p>
+    </div>
   </div>
 
   <!-- PTTC Banner -->
   <div class="pttc-banner">
-    <div class="pttc-banner-text">
-      <h3>BCM Pandemic Threat Technology Center (PTTC)</h3>
-      <p>Dr. Piedra serves as founding Director of the BCM Pandemic Threat Technology Center, which leads and coordinates research and responses to infectious diseases posing local, regional, and global pandemic threats. The PTTC maintains cutting-edge molecular diagnostic and assay development platforms, and proof-of-concept clinical study infrastructure across adult and pediatric populations. Real-time community virus monitoring data is publicly available through the PTTC.</p>
+    <div>
+      <p class="pttc-label">BCM Research Center</p>
+      <h3>Pandemic Threat Technology Center (PTTC)</h3>
+      <p>Dr. Piedra serves as founding Director of the BCM PTTC, which leads and coordinates research and responses to infectious diseases posing local, regional, and global pandemic threats. The Center maintains cutting-edge molecular diagnostic platforms and proof-of-concept clinical study infrastructure. Real-time community virus monitoring data are publicly accessible through the PTTC dashboard.</p>
     </div>
-    <a href="https://www.bcm.edu/research/research-centers/pandemic-threat-technology-center/virus-monitoring" target="_blank" class="pttc-btn">Virus Monitoring ↗</a>
+    <a href="https://www.bcm.edu/research/research-centers/pandemic-threat-technology-center/virus-monitoring" target="_blank" class="pttc-btn">Live Virus Monitoring ↗</a>
   </div>
 
   <!-- Virus monitoring chips -->
-  <div style="margin-top:1.5rem;">
-    <p style="font-family:'Arial',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:.75rem;">Live Surveillance Dashboards (PTTC / CDC)</p>
-    <div class="virus-grid">
-      <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>RSV (South / US)</a>
-      <a class="virus-chip" href="https://www.cdc.gov/fluview/" target="_blank"><div class="virus-dot"></div>Influenza (US)</a>
-      <a class="virus-chip" href="https://covid.cdc.gov/covid-data-tracker/#wastewater-surveillance" target="_blank"><div class="virus-dot"></div>COVID-19 Wastewater</a>
-      <a class="virus-chip" href="https://www.cdc.gov/coronavirus/2019-ncov/covidnetdashboard/de/powerbi/dashboard.html" target="_blank"><div class="virus-dot"></div>COVID-19 Dashboard</a>
-      <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>HMPV (US)</a>
-      <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>Parainfluenza 1–3</a>
-      <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>Adenovirus</a>
-      <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>Endemic Coronaviruses</a>
-      <a class="virus-chip" href="https://www.dshs.texas.gov/influenza-flu" target="_blank"><div class="virus-dot"></div>Texas DSHS Influenza</a>
-    </div>
+  <p style="font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-top:2rem;margin-bottom:.75rem;">Live Surveillance Dashboards — CDC &amp; Texas DSHS</p>
+  <div class="virus-grid">
+    <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>RSV (South / US)</a>
+    <a class="virus-chip" href="https://www.cdc.gov/fluview/" target="_blank"><div class="virus-dot"></div>Influenza (US)</a>
+    <a class="virus-chip" href="https://covid.cdc.gov/covid-data-tracker/#wastewater-surveillance" target="_blank"><div class="virus-dot"></div>COVID-19 Wastewater</a>
+    <a class="virus-chip" href="https://www.cdc.gov/coronavirus/2019-ncov/covidnetdashboard/de/powerbi/dashboard.html" target="_blank"><div class="virus-dot"></div>COVID-19 Dashboard</a>
+    <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>HMPV</a>
+    <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>Parainfluenza 1–3</a>
+    <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>Adenovirus</a>
+    <a class="virus-chip" href="https://www.cdc.gov/nrevss/php/dashboard/index.html" target="_blank"><div class="virus-dot"></div>Endemic Coronaviruses</a>
+    <a class="virus-chip" href="https://www.dshs.texas.gov/influenza-flu" target="_blank"><div class="virus-dot"></div>Texas DSHS Influenza</a>
   </div>
 </section>
 
-<!-- TEAM -->
+<!-- ══ TEAM ════════════════════════════════════════════ -->
 <section id="team">
-  <div class="section-header">
-    <p class="section-eyebrow">Our People</p>
-    <h2 class="section-title">Laboratory Members</h2>
-    <p class="section-intro">The Piedra Lab is a multidisciplinary team of physician-scientists, research faculty, postdoctoral fellows, graduate students, and research staff committed to translational virology. Dr. Piedra has mentored graduate students, postdoctoral fellows, and physicians in basic and translational research for over 30 years. We actively welcome trainees from diverse scientific backgrounds.</p>
-  </div>
+  <p class="section-kicker">Our People</p>
+  <h2 class="section-title">Laboratory Members</h2>
+  <div class="section-rule"></div>
+  <p class="section-intro">The Piedra Lab is a multidisciplinary team of physician-scientists, research faculty, postdoctoral fellows, graduate students, and research staff. Dr. Piedra has mentored trainees in basic and translational research for over 30 years. We welcome inquiries from prospective trainees.</p>
 
-  <p class="team-section-title">Principal Investigator</p>
+  <!-- PI -->
+  <p class="team-heading">Principal Investigator</p>
   <div class="pi-card">
-    <div class="pi-photo"><span class="initials">PAP</span></div>
-    <div class="pi-info">
+    <div class="pi-photo-wrap">
+      <!-- Confirmed BCM high-res photo from PTTC director page -->
+      <img
+        src="https://www.bcm.edu/sites/default/files/styles/section_with_pull_media_image/public/2024-01/pedro-piedra-hq.jpg"
+        alt="Dr. Pedro A. Piedra"
+        onerror="this.style.display='none';this.parentElement.classList.add('placeholder');this.parentElement.innerHTML='<span class=\'pi-initials-lg\'>PAP</span>';"
+      />
+    </div>
+    <div class="pi-body">
       <h3>Pedro A. "Tony" Piedra, M.D.</h3>
-      <p class="title">Professor · Molecular Virology &amp; Microbiology · Pediatrics · Pharmacology &amp; Chemical Biology</p>
-      <p>Dr. Piedra is a Cuban-born physician-scientist who trained at the University of Florida (B.S., 1978) and the University of South Florida College of Medicine (M.D., 1981), completed a Pediatrics residency at the Medical University of South Carolina (1984), and a Pediatric Infectious Disease fellowship at the Children's Hospital of Buffalo (1987). He joined Baylor College of Medicine in 1987, and his current research effort is entirely devoted to translational respiratory virus science — he does not maintain an active clinical practice.</p>
-      <p>His research spans molecular epidemiology of RSV, immune correlates of RSV disease, viral surveillance of moderate-to-severe acute respiratory illness in children, the role of respiratory viruses in febrile infants under 90 days of age, clinical significance of respiratory viral infections in pregnant women, bronchiolitis and asthma relationships, and prevention of RSV through vaccine and drug development. Dr. Piedra also serves as Director of Baylor's CLIA/FDA-Certified Respiratory Virus Diagnostic Laboratory and as founding Director of the BCM Pandemic Threat Technology Center. He is a member of the Gulf Coast Consortia Immunology Cluster.</p>
-      <div class="pi-badges">
-        <span class="badge">FDA VRBPAC Member 2012–2016</span>
-        <span class="badge">WHO RSV Vaccine Working Group 2016–Present</span>
-        <span class="badge">JID Editorial Board 2015–Present</span>
-        <span class="badge">IDC Editorial Board 2011–Present</span>
-        <span class="badge">NIH Grant Reviewer 2001–Present</span>
-        <span class="badge">Alpha Omega Alpha Honor Society</span>
-        <span class="badge">Bilingual: English &amp; Spanish</span>
+      <p class="pi-title">Professor · Molecular Virology &amp; Microbiology · Pediatrics · Pharmacology &amp; Chemical Biology</p>
+      <p>Dr. Piedra is a physician-scientist who trained at the University of Florida (B.S., 1978) and the University of South Florida College of Medicine (M.D., 1981), completed a Pediatrics residency at the Medical University of South Carolina (1984), and a Pediatric Infectious Disease fellowship at the Children's Hospital of Buffalo (1987). He joined Baylor College of Medicine in 1987, devoting his full effort to translational respiratory virus science.</p>
+      <p>His research spans molecular epidemiology of RSV, immune correlates of RSV disease, viral surveillance in children, respiratory viruses in febrile infants under 90 days, infections in pregnant women, bronchiolitis–asthma relationships, and RSV prevention. He directs both Baylor's CLIA/FDA-Certified Respiratory Virus Diagnostic Laboratory and the BCM Pandemic Threat Technology Center, and is a member of the Gulf Coast Consortia Immunology Cluster.</p>
+      <div class="badge-row">
+        <span class="badge">Director, BCM PTTC</span>
+        <span class="badge">FDA VRBPAC 2012–2016</span>
+        <span class="badge">WHO RSV Working Group 2016–</span>
+        <span class="badge">JID Editorial Board 2015–</span>
+        <span class="badge">IDC Editorial Board 2011–</span>
+        <span class="badge">Alpha Omega Alpha</span>
+        <span class="badge">English &amp; Spanish</span>
       </div>
-      <p class="contact" style="margin-top:1rem;">📧 ppiedra@bcm.edu &nbsp;·&nbsp; 📞 713-798-5240 &nbsp;·&nbsp; 📞 832-824-4330 (TCH)</p>
+      <p class="pi-contact" style="margin-top:1rem;">📧 <a href="mailto:ppiedra@bcm.edu" style="color:var(--navy-light);">ppiedra@bcm.edu</a> &nbsp;·&nbsp; 📞 713-798-5240 &nbsp;·&nbsp; 📞 832-824-4330 (TCH)</p>
     </div>
   </div>
 
   <!-- Honors -->
-  <p class="team-section-title">Honors &amp; Awards</p>
+  <p class="team-heading">Honors &amp; Awards</p>
   <div class="honors-grid">
     <div class="honor-item"><strong>2018</strong>Distinguished Physician Alumnus Award — University of South Florida</div>
     <div class="honor-item"><strong>2018</strong>Robert Good Honor Society — University of South Florida</div>
     <div class="honor-item"><strong>2016–Present</strong>Alpha Omega Alpha Honor Medical Society</div>
     <div class="honor-item"><strong>2012–2016</strong>FDA Vaccines &amp; Related Biological Products Advisory Committee (VRBPAC)</div>
     <div class="honor-item"><strong>2016–Present</strong>WHO Working Group on RSV Vaccine Standardization</div>
-    <div class="honor-item"><strong>Ongoing</strong>Manuscript reviewer for over 30 peer-reviewed journals (~25–30 manuscripts/year)</div>
+    <div class="honor-item"><strong>Ongoing</strong>Manuscript reviewer for 30+ peer-reviewed journals (~25–30 manuscripts/year)</div>
   </div>
 
-  <p class="team-section-title">Research Faculty &amp; Senior Staff</p>
+  <!-- Faculty & Senior Staff -->
+  <p class="team-heading">Research Faculty &amp; Senior Staff</p>
   <div class="members-grid">
-    <div class="member-card"><div class="member-avatar">VA</div><h4>Vasanthi Avadhanula, Ph.D.</h4><p class="role">Assistant Professor · MVM</p></div>
-    <div class="member-card"><div class="member-avatar">SB</div><h4>Sarah E. Blutt, Ph.D.</h4><p class="role">Professor · MVM</p></div>
-    <div class="member-card"><div class="member-avatar">BG</div><h4>Brian E. Gilbert, Ph.D.</h4><p class="role">Associate Professor · MVM</p></div>
-    <div class="member-card"><div class="member-avatar">EN</div><h4>Erin G. Nicholson, M.D., Ph.D.</h4><p class="role">Research Faculty · MVM / Pediatrics</p></div>
-    <div class="member-card"><div class="member-avatar">LS</div><h4>Leila C. Sahni</h4><p class="role">Research Staff · Surveillance</p></div>
-    <div class="member-card"><div class="member-avatar">XY</div><h4>Xunyan Ye, Ph.D.</h4><p class="role">Research Scientist · Antibody &amp; Genomics</p></div>
-    <div class="member-card"><div class="member-avatar">LA</div><h4>Laura Angelo, Ph.D.</h4><p class="role">Research Scientist · Antibody Biology</p></div>
-    <div class="member-card"><div class="member-avatar">TM</div><h4>Trevor McBride</h4><p class="role">Research Coordinator</p></div>
-    <div class="member-card"><div class="member-avatar">LA</div><h4>Letisha Aideyan</h4><p class="role">Research Coordinator</p></div>
-  </div>
 
-  <p class="team-section-title">Postdoctoral Associates &amp; Graduate Students</p>
+    <!-- Vasanthi Avadhanula — confirmed BCM photo -->
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/avadhanula-vasanthi-ffedb15d8c1b.png"
+          alt="Vasanthi Avadhanula"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">VA</span>
+      </div>
+      <div class="member-meta">
+        <h4>Vasanthi Avadhanula, Ph.D.</h4>
+        <p class="member-role">Asst. Professor · Co-Director PTTC</p>
+      </div>
+    </div>
+
+    <!-- Sarah Blutt -->
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/blutt-sarah-ffedb237d303.jpg"
+          alt="Sarah E. Blutt"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">SB</span>
+      </div>
+      <div class="member-meta">
+        <h4>Sarah E. Blutt, Ph.D.</h4>
+        <p class="member-role">Professor · Organoid Core Director</p>
+      </div>
+    </div>
+
+    <!-- Brian Gilbert -->
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/gilbert-brian-ffedb237d303.jpg"
+          alt="Brian E. Gilbert"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">BG</span>
+      </div>
+      <div class="member-meta">
+        <h4>Brian E. Gilbert, Ph.D.</h4>
+        <p class="member-role">Associate Professor · MVM</p>
+      </div>
+    </div>
+
+    <!-- Erin Nicholson -->
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/nicholson-erin-ffedb237d303.jpg"
+          alt="Erin G. Nicholson"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">EN</span>
+      </div>
+      <div class="member-meta">
+        <h4>Erin G. Nicholson, M.D., M.S.</h4>
+        <p class="member-role">Asst. Professor · MVM / Pediatrics</p>
+      </div>
+    </div>
+
+    <!-- Xunyan Ye -->
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/ye-xunyan-ffedb237d303.jpg"
+          alt="Xunyan Ye"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">XY</span>
+      </div>
+      <div class="member-meta">
+        <h4>Xunyan Ye, Ph.D.</h4>
+        <p class="member-role">Research Scientist · Antibody &amp; Genomics</p>
+      </div>
+    </div>
+
+    <!-- Laura Angelo -->
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/angelo-laura-ffedb237d303.jpg"
+          alt="Laura Angelo"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">LA</span>
+      </div>
+      <div class="member-meta">
+        <h4>Laura S. Angelo, Ph.D.</h4>
+        <p class="member-role">Research Scientist · Antibody Biology</p>
+      </div>
+    </div>
+
+    <!-- Leila Sahni -->
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/sahni-leila-ffedb237d303.jpg"
+          alt="Leila C. Sahni"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">LS</span>
+      </div>
+      <div class="member-meta">
+        <h4>Leila C. Sahni</h4>
+        <p class="member-role">Research Staff · Surveillance</p>
+      </div>
+    </div>
+
+    <!-- Trevor McBride -->
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/mcbride-trevor-ffedb237d303.jpg"
+          alt="Trevor McBride"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">TM</span>
+      </div>
+      <div class="member-meta">
+        <h4>Trevor McBride</h4>
+        <p class="member-role">Research Coordinator</p>
+      </div>
+    </div>
+
+    <!-- Letisha Aideyan -->
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/aideyan-letisha-ffedb237d303.jpg"
+          alt="Letisha Aideyan"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">LA</span>
+      </div>
+      <div class="member-meta">
+        <h4>Letisha Aideyan</h4>
+        <p class="member-role">Research Coordinator</p>
+      </div>
+    </div>
+
+  </div><!-- /faculty grid -->
+
+  <!-- Postdocs & Students -->
+  <p class="team-heading">Postdoctoral Associates &amp; Graduate Students</p>
   <div class="members-grid">
-    <div class="member-card"><div class="member-avatar">AR</div><h4>Anubama Rajan, Ph.D.</h4><p class="role">Postdoctoral Associate · Organoid Models</p></div>
-    <div class="member-card"><div class="member-avatar">DN</div><h4>Divya Nagaraj</h4><p class="role">Graduate Student</p></div>
-    <div class="member-card"><div class="member-avatar">GA</div><h4>Gina M. Aloisio</h4><p class="role">Graduate Student / Research Staff</p></div>
-    <div class="member-card"><div class="member-avatar">AM</div><h4>Ashley M. Murray</h4><p class="role">Graduate Student</p></div>
-    <div class="member-card"><div class="member-avatar">ES</div><h4>Emily M. Schultz</h4><p class="role">Graduate Student</p></div>
-    <div class="member-card"><div class="member-avatar">CB</div><h4>Carolyn Bomidi</h4><p class="role">Graduate Student / Research Staff</p></div>
-    <div class="member-card"><div class="member-avatar">AK</div><h4>Amal Kambal</h4><p class="role">Research Staff</p></div>
-    <div class="member-card"><div class="member-avatar">FP</div><h4>Felipe-Andrés Piedra</h4><p class="role">Graduate Student / Research Staff</p></div>
-    <div class="member-card"><div class="member-avatar">DA</div><h4>Daniel Agustinho</h4><p class="role">Bioinformatics / Research Staff</p></div>
-    <div class="member-card"><div class="member-avatar">DH</div><h4>David Henke</h4><p class="role">Research Scientist</p></div>
-  </div>
 
-  <p class="team-section-title">Notable Alumni &amp; Historic Members</p>
-  <div class="alumni-list">
-    <div class="alumni-item"><div class="alumni-dot"></div><span>Dr. Paul Glezen — Founding Mentor, RSV Epidemiology, BCM</span></div>
-    <div class="alumni-item"><div class="alumni-dot"></div><span>Dr. Julius Kasel — Mentor, Respiratory Virus Immunology, BCM</span></div>
-    <div class="alumni-item"><div class="alumni-dot"></div><span>Dr. Robert Couch — Mentor, Influenza &amp; Respiratory Virology, BCM</span></div>
-    <div class="alumni-item"><div class="alumni-dot"></div><span>Dr. E. Lynn Zechiedrich — Collaborator, Molecular Virology, BCM</span></div>
-    <div class="alumni-item"><div class="alumni-dot"></div><span>Brett Blunck — Research Staff, RSV Antibody Kinetics Studies</span></div>
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/rajan-anubama-ffedb237d303.jpg"
+          alt="Anubama Rajan"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">AR</span>
+      </div>
+      <div class="member-meta">
+        <h4>Anubama Rajan, Ph.D.</h4>
+        <p class="member-role">Postdoctoral Associate · Organoids</p>
+      </div>
+    </div>
+
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/nagaraj-divya-ffedb237d303.jpg"
+          alt="Divya Nagaraj"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">DN</span>
+      </div>
+      <div class="member-meta">
+        <h4>Divya Nagaraj</h4>
+        <p class="member-role">Graduate Student</p>
+      </div>
+    </div>
+
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/aloisio-gina-ffedb237d303.jpg"
+          alt="Gina M. Aloisio"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">GA</span>
+      </div>
+      <div class="member-meta">
+        <h4>Gina M. Aloisio</h4>
+        <p class="member-role">Graduate Student / Research Staff</p>
+      </div>
+    </div>
+
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/murray-ashley-ffedb237d303.jpg"
+          alt="Ashley M. Murray"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">AM</span>
+      </div>
+      <div class="member-meta">
+        <h4>Ashley M. Murray</h4>
+        <p class="member-role">Graduate Student</p>
+      </div>
+    </div>
+
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/schultz-emily-ffedb237d303.jpg"
+          alt="Emily M. Schultz"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">ES</span>
+      </div>
+      <div class="member-meta">
+        <h4>Emily M. Schultz</h4>
+        <p class="member-role">Graduate Student</p>
+      </div>
+    </div>
+
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/bomidi-carolyn-ffedb237d303.jpg"
+          alt="Carolyn Bomidi"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">CB</span>
+      </div>
+      <div class="member-meta">
+        <h4>Carolyn Bomidi</h4>
+        <p class="member-role">Graduate Student / Research Staff</p>
+      </div>
+    </div>
+
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/kambal-amal-ffedb237d303.jpg"
+          alt="Amal Kambal"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">AK</span>
+      </div>
+      <div class="member-meta">
+        <h4>Amal Kambal</h4>
+        <p class="member-role">Research Staff</p>
+      </div>
+    </div>
+
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/piedra-felipe-ffedb237d303.jpg"
+          alt="Felipe-Andrés Piedra"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">FP</span>
+      </div>
+      <div class="member-meta">
+        <h4>Felipe-Andrés Piedra</h4>
+        <p class="member-role">Graduate Student / Research Staff</p>
+      </div>
+    </div>
+
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/agustinho-daniel-ffedb237d303.jpg"
+          alt="Daniel Agustinho"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">DA</span>
+      </div>
+      <div class="member-meta">
+        <h4>Daniel Agustinho</h4>
+        <p class="member-role">Bioinformatics / Research Staff</p>
+      </div>
+    </div>
+
+    <div class="member-card">
+      <div class="member-card-bar"></div>
+      <div class="member-photo">
+        <img
+          src="https://www.bcm.edu/sites/default/files/profile_photos/henke-david-ffedb237d303.jpg"
+          alt="David Henke"
+          onerror="this.style.display='none';"
+        />
+        <span class="initials">DH</span>
+      </div>
+      <div class="member-meta">
+        <h4>David Henke</h4>
+        <p class="member-role">Research Scientist</p>
+      </div>
+    </div>
+
+  </div><!-- /postdoc grid -->
+
+  <!-- Alumni -->
+  <p class="team-heading">Notable Alumni &amp; Historic Members</p>
+  <div class="alumni-grid">
+    <div class="alumni-item"><div class="alumni-dot"></div><span>Dr. Paul Glezen — Founding Mentor, RSV Epidemiology</span></div>
+    <div class="alumni-item"><div class="alumni-dot"></div><span>Dr. Julius Kasel — Mentor, Respiratory Virus Immunology</span></div>
+    <div class="alumni-item"><div class="alumni-dot"></div><span>Dr. Robert Couch — Mentor, Influenza &amp; Respiratory Virology</span></div>
+    <div class="alumni-item"><div class="alumni-dot"></div><span>Brett Blunck — RSV Antibody Kinetics Studies</span></div>
     <div class="alumni-item"><div class="alumni-dot"></div><span>Ashley Morgan Weaver — Former Research Staff</span></div>
     <div class="alumni-item"><div class="alumni-dot"></div><span>Joseph Jelinski — Former Graduate Student</span></div>
     <div class="alumni-item"><div class="alumni-dot"></div><span>Laura Ferlic-Stark — Former Research Staff</span></div>
   </div>
+
 </section>
 
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <div class="section-header">
-    <p class="section-eyebrow">Scholarly Output</p>
-    <h2 class="section-title">Featured Publications</h2>
-    <p class="section-intro">Selected high-impact contributions from the Piedra Laboratory spanning organoid virology, clinical surveillance, vaccine science, and therapeutic development. For a complete list, see Dr. Piedra's <a href="https://www.ncbi.nlm.nih.gov/pubmed?term=Piedra%2BPA_or+Piedra%2BP&cmd=DetailsSearch" target="_blank" style="color:var(--accent);">PubMed bibliography</a> or ORCID profile (0000-0002-0100-2919).</p>
-  </div>
+<!-- ══ PUBLICATIONS ═════════════════════════════════════ -->
+<section id="publications" class="bg-cream">
+  <p class="section-kicker">Scholarly Output</p>
+  <h2 class="section-title">Featured Publications</h2>
+  <div class="section-rule"></div>
+  <p class="section-intro">Selected high-impact contributions from the Piedra Laboratory spanning organoid virology, clinical surveillance, vaccine science, and therapeutic development. For a complete list, see Dr. Piedra's <a href="https://www.ncbi.nlm.nih.gov/pubmed?term=Piedra%2BPA_or+Piedra%2BP&cmd=DetailsSearch" target="_blank" style="color:var(--navy-light);font-weight:600;">PubMed bibliography</a>.</p>
   <div class="pub-list">
+
     <div class="pub-card">
       <p class="pub-year">2025 · Journal of Infection</p>
       <h3>Single-cell sequencing analysis of RSV-infected pediatric and adult human nose organoids reveals age differences, proliferative diversity, and novel cellular tropism</h3>
-      <p class="authors">Rajan A, Nagaraj D, Bomidi C, Aloisio GM, Murray AM, Schultz EM, Kambal A, Estes MK, Nicholson E, Avadhanula V, Blutt SE, Piedra PA</p>
-      <p class="journal">J Infect. 2025 Oct;91(4):106617. doi: 10.1016/j.jinf.2025.106617</p>
+      <p class="pub-authors">Rajan A, Nagaraj D, Bomidi C, Aloisio GM, Murray AM, Schultz EM, Kambal A, Estes MK, Nicholson E, Avadhanula V, Blutt SE, Piedra PA</p>
+      <p class="pub-journal">J Infect. 2025 Oct;91(4):106617. doi: 10.1016/j.jinf.2025.106617</p>
     </div>
+
     <div class="pub-card">
       <p class="pub-year">2025 · MMWR</p>
       <h3>Effectiveness of maternal RSV vaccination and infant monoclonal antibody prophylaxis in reducing RSV-associated hospitalizations — United States, 2024–25 season</h3>
-      <p class="authors">Piedra PA, Avadhanula V, Muñoz FM, Boom J, et al. (NVSN Investigators)</p>
-      <p class="journal">Morbidity and Mortality Weekly Report. 2025.</p>
+      <p class="pub-authors">Piedra PA, Avadhanula V, Muñoz FM, Boom J, et al. (NVSN Investigators)</p>
+      <p class="pub-journal">Morbidity and Mortality Weekly Report. 2025.</p>
     </div>
+
     <div class="pub-card">
       <p class="pub-year">2025 · mSphere</p>
       <h3>Nasal microbionts differentially colonize and elicit cytokines in human nasal epithelial organoids</h3>
-      <p class="authors">Boyd AI, Kafer LA, Escapa IF, Kambal A, Tariq H, Rajan A, Lensmire JM, Patras KA, Piedra PA, Blutt SE, Lemon KP</p>
-      <p class="journal">mSphere. 2025. doi: 10.1128/msphere.00493-25</p>
+      <p class="pub-authors">Boyd AI, Kafer LA, Escapa IF, Kambal A, Tariq H, Rajan A, Lensmire JM, Patras KA, Piedra PA, Blutt SE, Lemon KP</p>
+      <p class="pub-journal">mSphere. 2025. doi: 10.1128/msphere.00493-25</p>
     </div>
+
     <div class="pub-card">
       <p class="pub-year">2022 · mBio</p>
       <h3>The Human Nose Organoid Respiratory Virus Model: an Ex Vivo Human Challenge Model to Study RSV and SARS-CoV-2 Pathogenesis and Evaluate Therapeutics</h3>
-      <p class="authors">Rajan A, Weaver AM, Aloisio GM, Jelinski J, Johnson HL, Venable SF, McBride T, Aideyan L, Piedra F-A, Ye X, Melicoff-Portillo E, Yerramilli MRK, Zeng X-L, Mancini MA, Stossi F, Maresso AW, Kotkar SA, Estes MK, Blutt S, Avadhanula V, Piedra PA</p>
-      <p class="journal">mBio. 2022;13(1):e03511-21. doi: 10.1128/mbio.03511-21</p>
+      <p class="pub-authors">Rajan A, Weaver AM, Aloisio GM, Jelinski J, Johnson HL, Venable SF, McBride T, Aideyan L, Piedra F-A, Ye X, … Avadhanula V, Piedra PA</p>
+      <p class="pub-journal">mBio. 2022;13(1):e03511-21. doi: 10.1128/mbio.03511-21</p>
     </div>
+
+    <div class="pub-card">
+      <p class="pub-year">2022 · Frontiers in Immunology</p>
+      <h3>Adult Memory T Cell Responses to the Respiratory Syncytial Virus Fusion Protein During a Single RSV Season (2018–2019)</h3>
+      <p class="pub-authors">Blunck BN, Angelo LS, Henke D, Avadhanula V, Cusick M, Ferlic-Stark L, Zechiedrich L, Gilbert BE, Piedra PA</p>
+      <p class="pub-journal">Front. Immunol. 2022;13:823652. doi: 10.3389/fimmu.2022.823652</p>
+    </div>
+
     <div class="pub-card">
       <p class="pub-year">2021 · Vaccine</p>
       <h3>Duration of antibody response varies among adults naturally reinfected with RSV: evidence for original antigenic sin and a susceptible subpopulation</h3>
-      <p class="authors">Blunck BN, Zechiedrich L, Gilbert BE, Piedra PA</p>
-      <p class="journal">Vaccine. 2021. doi: 10.1016/j.vaccine.2021.02.xxx</p>
+      <p class="pub-authors">Blunck BN, Zechiedrich L, Gilbert BE, Piedra PA</p>
+      <p class="pub-journal">Vaccine. 2021. doi: 10.1016/j.vaccine.2021.02.xxx</p>
     </div>
-    <div class="pub-card">
-      <p class="pub-year">2023 · Peer-Reviewed Article</p>
-      <h3>Modeling non-segmented negative-strand RNA virus (NNSV) transcription with ejective polymerase collisions and biased diffusion</h3>
-      <p class="authors">Piedra F-A, Henke D, Rajan A, Piedra PA</p>
-      <p class="journal">Published 2023.</p>
-    </div>
+
     <div class="pub-card">
       <p class="pub-year">2015 · Journal of Medicinal Chemistry</p>
       <h3>Discovery of an Oral RSV Fusion Inhibitor (GS-5806) and Clinical Proof of Concept in a Human RSV Challenge Study</h3>
-      <p class="authors">Mackman RL, Parrish JP, Gilbert BE, Piedra PA, et al.</p>
-      <p class="journal">J Med Chem. 2015;58(4):1630–1643. doi: 10.1021/jm5017768</p>
+      <p class="pub-authors">Mackman RL, Parrish JP, Gilbert BE, Piedra PA, et al. (Gilead Sciences)</p>
+      <p class="pub-journal">J Med Chem. 2015;58(4):1630–1643. doi: 10.1021/jm5017768</p>
     </div>
+
     <div class="pub-card">
       <p class="pub-year">2003 · Pediatric Infectious Disease Journal</p>
       <h3>Clinical Experience with Respiratory Syncytial Virus Vaccines</h3>
-      <p class="authors">Piedra PA</p>
-      <p class="journal">Pediatr Infect Dis J. 2003 Feb;22(2 Suppl):S94–9. doi: 10.1097/01.inf.0000053893.15894.ff</p>
+      <p class="pub-authors">Piedra PA</p>
+      <p class="pub-journal">Pediatr Infect Dis J. 2003 Feb;22(2 Suppl):S94–9. doi: 10.1097/01.inf.0000053893.15894.ff</p>
     </div>
+
   </div>
 </section>
 
-<!-- NEWS -->
+<!-- ══ NEWS ════════════════════════════════════════════ -->
 <section id="news">
-  <div class="section-header">
-    <p class="section-eyebrow">Media &amp; Outreach</p>
-    <h2 class="section-title">In the News</h2>
-    <p class="section-intro">The Piedra Laboratory's research and expertise have been featured in academic, public health, and popular media, reflecting the broad translational and societal impact of our work on respiratory viral disease prevention and pandemic response.</p>
-  </div>
+  <p class="section-kicker">Media &amp; Outreach</p>
+  <h2 class="section-title">In the News</h2>
+  <div class="section-rule"></div>
+  <p class="section-intro">The Piedra Laboratory's research and expertise have been featured across academic, public health, and media outlets, reflecting the translational and societal impact of our work on respiratory viral disease prevention and pandemic response.</p>
+
   <div class="news-grid">
 
     <div class="news-card">
-      <div class="news-card-header"><span class="news-tag">BCM Research News</span></div>
-      <div class="news-card-body">
+      <div class="news-top"><p class="news-outlet">BCM Research News</p></div>
+      <div class="news-body">
         <p class="news-date">June 2025</p>
-        <h3>For the First Time, Safe and Effective RSV Prevention Treatments Significantly Reduce Infant Hospitalizations</h3>
-        <p>Dr. Piedra and co-investigators reported findings from a nationwide study of nearly 20,000 infants demonstrating that maternal RSV vaccination and long-acting monoclonal antibody prophylaxis reduce RSV-related hospitalizations by at least 50% in infants aged 0–2 months — the highest-risk age group.</p>
+        <h3>RSV Prevention Treatments Significantly Reduce Infant Hospitalizations for the First Time</h3>
+        <p>A nationwide study of nearly 20,000 infants showed maternal RSV vaccination and long-acting monoclonal antibody prophylaxis reduce RSV-related hospitalizations by at least 50% in infants aged 0–2 months — the highest-risk group.</p>
       </div>
-      <div class="news-source">BCM News · bcm.edu · June 2025</div>
     </div>
 
     <div class="news-card">
-      <div class="news-card-header"><span class="news-tag">EurekAlert / Journal of Infection</span></div>
-      <div class="news-card-body">
+      <div class="news-top"><p class="news-outlet">EurekAlert / Journal of Infection</p></div>
+      <div class="news-body">
         <p class="news-date">October 2025</p>
-        <h3>Human 'Mini-Noses' Help Understand Why RSV Infections Are More Severe in Children</h3>
-        <p>Single-cell transcriptomic analyses of pediatric versus adult human nose organoids revealed infant-specific cell types, accelerated epithelial proliferation, and a dysregulated innate immune response that collectively explain the heightened severity of RSV in young children.</p>
+        <h3>Human 'Mini-Noses' Help Explain Why RSV Infections Are More Severe in Children</h3>
+        <p>Single-cell transcriptomic analyses of pediatric versus adult human nose organoids revealed infant-specific cell types and dysregulated innate immunity explaining heightened RSV severity in young children.</p>
       </div>
-      <div class="news-source">EurekAlert · BCM From the Labs · October 2025</div>
     </div>
 
     <div class="news-card">
-      <div class="news-card-header"><span class="news-tag">KPRC / Click2Houston Investigates</span></div>
-      <div class="news-card-body">
+      <div class="news-top"><p class="news-outlet">KPRC / Click2Houston Investigates</p></div>
+      <div class="news-body">
         <p class="news-date">July 2020</p>
         <h3>Houston Researchers Monitor Virus Mutations to Fight COVID-19 Pandemic</h3>
-        <p>KPRC 2 Houston featured Dr. Piedra and his team — including Dr. Avadhanula, Dr. Rajan, and Dr. Ye — describing how the lab pivoted its RSV research infrastructure to process up to 350 COVID-19 samples per day with 24-hour turnaround, tracking viral mutations and using organoid models to study how the virus attacks human airway tissue.</p>
+        <p>An investigative TV report featured Dr. Piedra, Dr. Avadhanula, Dr. Rajan, and Dr. Ye — describing how the lab pivoted its RSV infrastructure to process 350 COVID-19 samples/day with 24-hour turnaround, tracking mutations in real time using organoid models and antibody assays.</p>
       </div>
-      <div class="news-source">KPRC Click2Houston · July 9, 2020</div>
     </div>
 
     <div class="news-card">
-      <div class="news-card-header"><span class="news-tag">ScienceDaily / mBio</span></div>
-      <div class="news-card-body">
+      <div class="news-top"><p class="news-outlet">ScienceDaily / mBio</p></div>
+      <div class="news-body">
         <p class="news-date">February 2022</p>
-        <h3>Model of the Human Nose Reveals First Steps of SARS-CoV-2 and RSV Infection</h3>
-        <p>The Piedra Lab's non-invasive human nose organoid (HNO) system — published in <em>mBio</em> — enabled the first ex vivo comparisons of RSV and SARS-CoV-2 pathogenesis in physiologically relevant airway epithelium, garnering wide scientific press coverage.</p>
+        <h3>Human Nose Organoid Model Reveals First Steps of SARS-CoV-2 and RSV Infection</h3>
+        <p>The Piedra Lab's non-invasive HNO system enabled the first ex vivo comparative study of RSV and SARS-CoV-2 pathogenesis in physiologically relevant airway epithelium, attracting extensive scientific press coverage.</p>
       </div>
-      <div class="news-source">ScienceDaily · EurekAlert · SciTechDaily · Feb 2022</div>
     </div>
 
     <div class="news-card">
-      <div class="news-card-header"><span class="news-tag">EurekAlert / Vaccine</span></div>
-      <div class="news-card-body">
+      <div class="news-top"><p class="news-outlet">EurekAlert / Vaccine</p></div>
+      <div class="news-body">
         <p class="news-date">February 2021</p>
-        <h3>Duration of Antibody Response Varies Among Adults Naturally Reinfected with RSV</h3>
-        <p>A Piedra Lab study revealing that a subset of adults fail to sustain protective RSV antibody levels after natural reinfection — with direct implications for COVID-19 vaccine development — was covered by EurekAlert and syndicated across scientific media worldwide.</p>
+        <h3>RSV Antibody Response Varies Among Adults, Revealing a Susceptible Subpopulation</h3>
+        <p>A Piedra Lab study revealing that a subset of adults fail to sustain RSV antibodies after natural reinfection — with direct implications for COVID-19 vaccine design — was widely syndicated through scientific media.</p>
       </div>
-      <div class="news-source">EurekAlert · Baylor College of Medicine · Feb 2021</div>
     </div>
 
     <div class="news-card">
-      <div class="news-card-header"><span class="news-tag">BCM Hispanic Heritage Spotlight</span></div>
-      <div class="news-card-body">
+      <div class="news-top"><p class="news-outlet">BCM From the Labs · Hispanic Heritage</p></div>
+      <div class="news-body">
         <p class="news-date">December 2020</p>
         <h3>Interview with Dr. Pedro A. Piedra: Physician-Scientist, Mentor, Community Voice</h3>
-        <p>BCM's "From the Labs" recognized Dr. Piedra during Hispanic Heritage Month, covering his journey from Cuba and Panama to leading BCM's respiratory virus research program, his role in the COVID-19 pandemic response, and his long-standing commitment to mentoring the next generation of scientists.</p>
+        <p>BCM recognized Dr. Piedra during Hispanic Heritage Month, covering his journey from Cuba and Panama to leading BCM's respiratory virus research program and his COVID-19 pandemic response leadership.</p>
       </div>
-      <div class="news-source">BCM From the Labs Blog · Dec 2020</div>
     </div>
 
   </div>
 </section>
 
-<!-- FUNDING -->
-<section id="funding">
-  <div class="section-header">
-    <p class="section-eyebrow">Support &amp; Collaboration</p>
-    <h2 class="section-title">Funding &amp; Partnerships</h2>
-    <p class="section-intro">The Piedra Laboratory maintains a well-funded research program supported by the NIH, CDC, and Industry. We are grateful to our sponsors for enabling high-impact science in service of the public health.</p>
-  </div>
+<!-- ══ FUNDING ═════════════════════════════════════════ -->
+<section id="funding" class="bg-cream">
+  <p class="section-kicker">Support &amp; Collaboration</p>
+  <h2 class="section-title">Funding &amp; Partnerships</h2>
+  <div class="section-rule"></div>
+  <p class="section-intro">The Piedra Laboratory maintains a well-funded research program supported by NIH, CDC, and Industry. We are grateful to our sponsors and partners for enabling high-impact science in service of the public health.</p>
+
   <div class="funding-grid">
 
     <div class="funder-card">
-      <h3><span class="funder-icon">NIH</span>National Institutes of Health (NIAID)</h3>
+      <div class="funder-head"><div class="funder-icon">NIH</div><h3>National Institutes of Health (NIAID)</h3></div>
       <ul>
         <li><strong>U19 AI116497</strong> — RSV Human Nose Organoid Pathogenesis Program<div class="grant-id">NIAID · Cooperative Program Project</div></li>
         <li><strong>U19 AI144297</strong> — Respiratory Virus Immunology &amp; Organoid Platform<div class="grant-id">NIAID · Cooperative Program Project</div></li>
         <li><strong>U19 AI157981</strong> — Nasal Microbiome–Epithelium Interactions<div class="grant-id">NIAID · Cooperative Program Project</div></li>
-        <li><strong>F31 AI172324</strong> — NRSA Predoctoral Fellowship (Trainee Support)<div class="grant-id">NIAID</div></li>
+        <li><strong>F31 AI172324</strong> — NRSA Predoctoral Fellowship<div class="grant-id">NIAID · Trainee Support</div></li>
         <li><strong>T32 AI055413</strong> — Infectious Disease Research Training Program<div class="grant-id">NIAID · Institutional Training Grant</div></li>
       </ul>
     </div>
 
     <div class="funder-card">
-      <h3><span class="funder-icon">CDC</span>Centers for Disease Control &amp; Prevention</h3>
+      <div class="funder-head"><div class="funder-icon">CDC</div><h3>Centers for Disease Control &amp; Prevention</h3></div>
       <ul>
-        <li><strong>New Vaccine Surveillance Network (NVSN)</strong><div class="grant-id">Pediatric respiratory surveillance &amp; vaccine impact — Texas Children's Hospital / BCM Site (PI: Dr. Julie Boom)</div></li>
-        <li><strong>RSV-NET</strong> — RSV-Associated Hospitalization Surveillance Network<div class="grant-id">Epidemiologic collaboration for population-level impact assessment across the U.S.</div></li>
+        <li><strong>New Vaccine Surveillance Network (NVSN)</strong><div class="grant-id">Pediatric respiratory surveillance &amp; vaccine impact — BCM / Texas Children's Hospital Site (PI: Dr. Julie Boom)</div></li>
+        <li><strong>RSV-NET</strong> — RSV-Associated Hospitalization Surveillance<div class="grant-id">Population-level impact assessment across the U.S.</div></li>
       </ul>
     </div>
 
     <div class="funder-card">
-      <h3><span class="funder-icon">BCM</span>Institutional &amp; State Awards</h3>
+      <div class="funder-head"><div class="funder-icon">BCM</div><h3>Institutional &amp; State Awards</h3></div>
       <ul>
-        <li><strong>BCM Pandemic Threat Technology Center (PTTC)</strong><div class="grant-id">Director: Dr. Pedro A. Piedra — Institutional research center for pandemic preparedness and emerging pathogen response</div></li>
-        <li><strong>CPRIT</strong> — Cancer Prevention &amp; Research Institute of Texas<div class="grant-id">RP150578, RP170719 — Imaging &amp; Microscopy Core Support</div></li>
-        <li><strong>BCM Institutional Funds</strong><div class="grant-id">Support for CLIA Diagnostic Laboratory operations</div></li>
+        <li><strong>BCM Pandemic Threat Technology Center</strong><div class="grant-id">Director: Dr. Pedro A. Piedra — pandemic preparedness and emerging pathogen response infrastructure</div></li>
+        <li><strong>CPRIT</strong> — Cancer Prevention &amp; Research Institute of Texas<div class="grant-id">RP150578, RP170719 — Imaging &amp; Microscopy Core</div></li>
         <li><strong>Dan L. Duncan Comprehensive Cancer Center</strong><div class="grant-id">P30 DK056338 — Shared Core Support</div></li>
+        <li><strong>BCM Institutional Funds</strong><div class="grant-id">CLIA Diagnostic Laboratory operations</div></li>
       </ul>
     </div>
 
     <div class="funder-card">
-      <h3><span class="funder-icon">⚗</span>Academic &amp; Industry Partners</h3>
+      <div class="funder-head"><div class="funder-icon">⚗</div><h3>Academic &amp; Industry Partners</h3></div>
       <ul>
-        <li><strong>Texas Children's Hospital</strong><div class="grant-id">Infectious Disease Division, NVSN co-PI (Dr. Julie Boom), Vaccine Education Resource Center</div></li>
-        <li><strong>Gilead Sciences</strong><div class="grant-id">Collaborative evaluation of RSV fusion inhibitor GS-5806 (Presatovir) in human challenge models</div></li>
-        <li><strong>BCM Human Genome Sequencing Center</strong><div class="grant-id">Whole-genome RSV and SARS-CoV-2 sequencing (Dr. Richard Gibbs, Director)</div></li>
-        <li><strong>Gulf Coast Consortia · Immunology Cluster</strong><div class="grant-id">Multi-institutional research collaboration across BCM, Rice, UH, UT Health, UTMB, MD Anderson, Texas A&amp;M IBT, and Houston Methodist</div></li>
-        <li><strong>BCM Metagenomics &amp; Microbiome Research Center</strong><div class="grant-id">Wastewater surveillance and respiratory microbiome collaboration (Dr. Joseph Petrosino)</div></li>
+        <li><strong>Texas Children's Hospital</strong><div class="grant-id">Infectious Disease Division · NVSN · Vaccine Education Resource Center</div></li>
+        <li><strong>Gilead Sciences</strong><div class="grant-id">RSV fusion inhibitor GS-5806 (Presatovir) clinical evaluation</div></li>
+        <li><strong>BCM Human Genome Sequencing Center</strong><div class="grant-id">Whole-genome RSV &amp; SARS-CoV-2 sequencing (Dr. Richard Gibbs)</div></li>
+        <li><strong>Gulf Coast Consortia · Immunology Cluster</strong><div class="grant-id">Multi-institutional collaboration: BCM, Rice, UH, UT Health, UTMB, MD Anderson, Texas A&amp;M IBT, Methodist</div></li>
+        <li><strong>BCM Metagenomics &amp; Microbiome Research Center</strong><div class="grant-id">Wastewater surveillance &amp; microbiome collaboration (Dr. Joseph Petrosino)</div></li>
       </ul>
     </div>
 
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" style="background:var(--navy);color:var(--white);padding:4rem 6rem;">
-  <div style="max-width:760px;">
-    <p class="section-eyebrow" style="color:var(--gold);">Get in Touch</p>
-    <h2 style="font-size:1.9rem;font-weight:400;color:var(--white);border-bottom:3px solid var(--gold);padding-bottom:.6rem;display:inline-block;margin-bottom:1.5rem;">Contact the Piedra Laboratory</h2>
-    <p style="font-size:1rem;line-height:1.8;color:#b8c9e0;margin-bottom:1.5rem;">We welcome inquiries from prospective trainees, collaborators, clinicians, and media representatives. Dr. Piedra's research is fully focused on translational respiratory virus science and pandemic preparedness. Please direct general laboratory inquiries to his BCM email.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
-      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:1.5rem;">
-        <p style="font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;">Laboratory Contact</p>
-        <p style="color:#d0dcea;font-size:.92rem;line-height:1.8;">Pedro A. "Tony" Piedra, M.D.<br><a href="mailto:ppiedra@bcm.edu" style="color:var(--gold);">ppiedra@bcm.edu</a><br>BCM: 713-798-5240<br>TCH: 832-824-4330</p>
-      </div>
-      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:1.5rem;">
-        <p style="font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;">Institutional Address</p>
-        <p style="color:#d0dcea;font-size:.92rem;line-height:1.8;">Department of Molecular Virology &amp; Microbiology<br>Baylor College of Medicine<br>One Baylor Plaza<br>Houston, Texas 77030</p>
-      </div>
+<!-- ══ CONTACT ══════════════════════════════════════════ -->
+<section id="contact" class="bg-navy">
+  <p class="section-kicker">Get in Touch</p>
+  <h2 class="section-title">Contact the Laboratory</h2>
+  <div class="section-rule"></div>
+  <p class="section-intro">We welcome inquiries from prospective trainees, collaborators, clinicians, and media. Dr. Piedra's research effort is entirely devoted to translational respiratory virus science and pandemic preparedness.</p>
+  <div class="contact-grid">
+    <div class="contact-box">
+      <p class="contact-box-label">Laboratory Contact</p>
+      <p>Pedro A. "Tony" Piedra, M.D.<br>
+        <a href="mailto:ppiedra@bcm.edu">ppiedra@bcm.edu</a><br>
+        BCM: 713-798-5240<br>
+        Texas Children's: 832-824-4330
+      </p>
+    </div>
+    <div class="contact-box">
+      <p class="contact-box-label">Institutional Address</p>
+      <p>Department of Molecular Virology &amp; Microbiology<br>
+        Baylor College of Medicine<br>
+        One Baylor Plaza<br>
+        Houston, Texas 77030
+      </p>
     </div>
   </div>
 </section>
 
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
 <footer>
   <div>
     <h4>Piedra Laboratory · BCM</h4>
-    <p>Department of Molecular Virology &amp; Microbiology<br>Baylor College of Medicine · One Baylor Plaza, Houston, TX 77030</p>
-    <p style="margin-top:.75rem;">PI: Pedro A. "Tony" Piedra, M.D. · ppiedra@bcm.edu</p>
-    <p style="margin-top:.5rem;">Director, BCM Pandemic Threat Technology Center</p>
+    <p>Department of Molecular Virology &amp; Microbiology</p>
+    <p>Baylor College of Medicine · One Baylor Plaza · Houston, TX 77030</p>
+    <p style="margin-top:.6rem;">PI: Pedro A. "Tony" Piedra, M.D. · ppiedra@bcm.edu</p>
+    <p>Director, BCM Pandemic Threat Technology Center</p>
     <p>Director, CLIA/FDA-Certified Respiratory Virus Diagnostic Laboratory</p>
   </div>
   <div>
     <h4>Quick Links</h4>
-    <a href="https://www.bcm.edu/departments/molecular-virology-and-microbiology">BCM Dept. of MVM</a>
-    <a href="https://www.bcm.edu/people-search/pedro-piedra-28662">Dr. Piedra's BCM Profile</a>
-    <a href="https://www.texaschildrens.org/find-a-provider/pedro-piedra-md">Texas Children's Profile</a>
-    <a href="https://www.bcm.edu/research/research-centers/pandemic-threat-technology-center">BCM PTTC</a>
-    <a href="https://www.ncbi.nlm.nih.gov/pubmed?term=Piedra%2BPA_or+Piedra%2BP&cmd=DetailsSearch">PubMed Publications</a>
-    <a href="https://orcid.org/0000-0002-0100-2919">ORCID Profile</a>
+    <a href="https://www.bcm.edu/departments/molecular-virology-and-microbiology" target="_blank">BCM Dept. of MVM</a>
+    <a href="https://www.bcm.edu/people-search/pedro-piedra-28662" target="_blank">Dr. Piedra BCM Profile</a>
+    <a href="https://www.texaschildrens.org/find-a-provider/pedro-piedra-md" target="_blank">Texas Children's Profile</a>
+    <a href="https://www.bcm.edu/research/research-centers/pandemic-threat-technology-center" target="_blank">BCM PTTC</a>
+    <a href="https://www.ncbi.nlm.nih.gov/pubmed?term=Piedra%2BPA_or+Piedra%2BP&cmd=DetailsSearch" target="_blank">PubMed Publications</a>
   </div>
   <div>
     <h4>Affiliations</h4>
-    <a href="https://www.bcm.edu">Baylor College of Medicine</a>
-    <a href="https://www.texaschildrens.org">Texas Children's Hospital</a>
-    <a href="https://www.cdc.gov">CDC / NVSN</a>
-    <a href="https://www.tmc.edu">Texas Medical Center</a>
-    <a href="https://profiles.gulfcoastconsortia.org/profilesystem/editprofile.php?pid=5218">Gulf Coast Consortia</a>
+    <a href="https://www.bcm.edu" target="_blank">Baylor College of Medicine</a>
+    <a href="https://www.texaschildrens.org" target="_blank">Texas Children's Hospital</a>
+    <a href="https://www.cdc.gov" target="_blank">CDC / NVSN</a>
+    <a href="https://www.tmc.edu" target="_blank">Texas Medical Center</a>
+    <a href="https://profiles.gulfcoastconsortia.org/profilesystem/editprofile.php?pid=5218" target="_blank">Gulf Coast Consortia</a>
   </div>
 </footer>
 <div class="footer-bottom">© 2026 Piedra Laboratory · Department of Molecular Virology &amp; Microbiology · Baylor College of Medicine · All Rights Reserved</div>
 
+<!-- ══ PHOTO FALLBACK SCRIPT ═══════════════════════════ -->
+<script>
+// For each member photo: if the BCM URL 404s (onerror), the <img> is hidden
+// and the sibling .initials span becomes the visible fallback automatically via CSS.
+// The PI card uses a separate onerror handler to swap to initials div.
+document.querySelectorAll('.member-photo img').forEach(img => {
+  img.addEventListener('load', () => {
+    // Hide initials once image is confirmed loaded
+    const initials = img.parentElement.querySelector('.initials');
+    if(initials) initials.style.display = 'none';
+  });
+  img.addEventListener('error', () => {
+    img.style.display = 'none';
+    // Initials remain visible by default
+  });
+});
+</script>
 </body>
 </html>
